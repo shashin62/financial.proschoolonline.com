@@ -1535,7 +1535,7 @@ textarea {
 .p-r-md { padding-right:  60px !important; }
 .p-b-md { padding-bottom: 60px !important; }
 .p-l-md { padding-left:   60px !important; }
-.p-x-md { padding-right:  60px !important; padding-left:   60px !important; }
+.p-x-md { padding-right:  60px !important; padding-left:   30px !important; }
 .p-y-md { padding-top:    60px !important; padding-bottom: 0px !important; }
 
 .p-a-lg { padding:        120px !important; }
