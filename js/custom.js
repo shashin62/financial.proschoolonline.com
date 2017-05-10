@@ -472,6 +472,50 @@ $(document).on('click',"#btnsubmit", function(e) {
 
 
 /* ==========================================
+   Additional Info FORM
+============================================= */
+$(document).on('click',"#btnsubmitDownload", function(e) {
+    //e.preventDefault();
+    $(this).prop('disabled',true);
+    var data = {
+        name: $("#dName").val(),
+        email: $("#dEmail").val(),
+        phone: $("#dPhone").val(),
+        centre: $("#d_Centre_Name").val()
+    };
+
+    if ( isValidEmail(data['email']) && (data['name'].length > 1) && isValidPhoneNumber(data['phone']) ) {
+        $.ajax({
+            type: "POST",
+            url: "php/additional_info.php",
+            data: data,
+            success: function() {
+                $('.success.qf').delay(500).fadeIn(1000);
+                $('.failed.qf').fadeOut(500);
+                $("#infoForm").find("input , textarea").val("");
+                $("#btnsubmitDownload").prop('disabled',false);
+                setTimeout(function(){ 
+                    window.location = 'http://www.proschoolonline.com/media/documents/Financial%20Modelling_2016.pdf'; 
+//                    window.open('http://www.proschoolonline.com/media/documents/Financial%20Modelling_2016.pdf', '_blank');
+                }, 5000);
+                
+            },
+            error: function(err){
+                $('.failed.qf').delay(500).fadeIn(1000);
+                $('.success.qf').fadeOut(500);
+                $("#btnsubmitDownload").prop('disabled',false);
+            }
+        });
+    } else {
+        $('.inputf').delay(500).fadeIn(1000);
+        $('.success.qf').fadeOut(500);
+        $("#btnsubmitDownload").prop('disabled',false);
+    }
+
+    return false;
+});
+
+/* ==========================================
    DATEPICKER
 ============================================= */
 if( $("#dfDate").length ) {

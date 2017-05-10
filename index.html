@@ -500,12 +500,40 @@
             <!-- =========================
                 CTA SECTION
             ============================== -->
-            <section id="cta2" class="p-y-md cta bg-color ">
+            <section id="cta2" class="p-y-md cta " style="background-color: #ecedef;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 text-center single-line">
                             <p class="lead m-r-md f-w-900">Need more information?</p>
-                            <a href="http://www.proschoolonline.com/media/documents/Financial%20Modelling_2016.pdf" class="btn btn-yellow btn-md" target="_blank">Download Brochure <i class="fa fa-arrow-right m-l"></i></a>
+                            <!--href="http://www.proschoolonline.com/media/documents/Financial%20Modelling_2016.pdf"--> 
+                            <a class="btn btn-yellow btn-md" id="btn-download" >Download Brochure <i class="fa fa-arrow-right m-l"></i></a>
+                            <div id="download-form" style="display:none;">
+                                <form class="form-horizontal form-white text-white" id="downloadForm" enctype="multipart/form-data" method="Post">
+                                <!-- Notifications -->
+                                <p class="success qf"><i class="fa fa-check"></i> <strong>Your request has successfully been sent. You are being redirected to download page.</strong></p>
+                                <p class="failed qf"><i class="fa fa-exclamation-circle"></i><strong> Something went wrong!</strong></p>
+                                <p class="failed qf inputf"><i class="fa fa-exclamation-circle"></i><strong>Please enter proper values.</strong></p>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="FirstName" id="dName" placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="EmailAddress" id="dEmail" placeholder="Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" name="Phone"  id="dPhone" placeholder="Phone Number" required>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="d_Centre_Name" name="mx_Centre_Name">
+                                        <option value="">Please Select Centre Name</option>
+                                        <option value="Pune Centre" selected="selected">Pune Centre</option>
+                                    </select>
+                                </div> 
+                                <div class="form-group">
+                                    <button id="btnsubmitDownload" class="btn btn-yellow">Download</button>
+                                </div>
+                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -649,7 +677,16 @@
         <script src="js/custom.js"></script>
         
         <script type="text/javascript">
+            
+                $('#btn-download').click(function(e){
+                    $('#download-form').toggle();
+                });
+            
             	$("#qPhone").intlTelInput({
+                    initialCountry: "in",
+                    nationalMode: false,
+                });
+                $("#dPhone").intlTelInput({
                     initialCountry: "in",
                     nationalMode: false,
                 });
